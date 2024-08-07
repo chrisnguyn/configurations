@@ -1,0 +1,36 @@
+# Python
+
+repos:
+  # black: format code to follow the Black style guide
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+
+  # isort: sort imports
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort
+        args: ['--profile', 'black']
+
+  # pre-commit-hooks: various useful hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace  # Removes trailing whitespace
+      - id: end-of-file-fixer  # Ensures file ends with a single newline
+
+  # ruff: linter
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.249
+    hooks:
+      - id: ruff
+        args: [--fix]
+
+  # autoflake: removes unused imports
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args: [--remove-all-unused-imports]
